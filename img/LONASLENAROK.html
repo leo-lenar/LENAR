@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONAS LENAR | Fabricación e Instalación de Toldos, Cerramientos y Confecciones</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        amberCustom: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            950: '#451a03',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .zonda-badge {
+            background: linear-gradient(135deg, #451a03 0%, #78350f 100%);
+            border: 1px solid #d97706;
+        }
+        .carousel-card {
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out, filter 0.5s ease-out, z-index 0.5s ease-out;
+        }
+
+        /* LOGOS FIJOS EN FOOTER */
+        .logo-wrapper {
+            height: 3rem;
+            width: 10rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .logo-wrapper:hover {
+            transform: scale(1.05);
+        }
+        .logo-img {
+            max-height: 2.1rem;
+            width: auto;
+            object-fit: contain;
+            transition: filter 0.3s ease;
+        }
+        
+        .logo-italmec { transform: scale(1.15); filter: brightness(1.05); }
+        .logo-plavinil { transform: scale(1.25); }
+        .logo-sonne { transform: scale(1.15); }
+        .logo-vahe { transform: scale(1.2); filter: contrast(105%); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-600 selection:text-white relative">
+
+    <!-- MODAL POPUP CON NAVEGACIÓN (GALERÍA AMPLIADA) -->
+    <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeImageModal()">
+        <button onclick="closeImageModal()" class="absolute top-6 right-6 z-50 text-slate-400 hover:text-white text-3xl font-bold transition-colors p-2">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button onclick="navigateModal(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-slate-900/80 hover:bg-brand-600 text-white border border-slate-700/80 flex items-center justify-center transition-all shadow-2xl group" onclick="event.stopPropagation()">
+            <i class="fa-solid fa-chevron-left text-xl group-hover:scale-110 transition-transform"></i>
+        </button>
+
+        <button onclick="navigateModal(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-slate-900/80 hover:bg-brand-600 text-white border border-slate-700/80 flex items-center justify-center transition-all shadow-2xl group" onclick="event.stopPropagation()">
+            <i class="fa-solid fa-chevron-right text-xl group-hover:scale-110 transition-transform"></i>
+        </button>
+
+        <div class="max-w-4xl max-h-[85vh] relative flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+            <img id="modal-img" src="" alt="Imagen ampliada" class="max-w-full max-h-[70vh] rounded-2xl shadow-2xl border border-slate-700 object-contain transition-all duration-300">
+            <p id="modal-caption" class="text-white font-bold text-center mt-4 text-base sm:text-lg"></p>
+            <p id="modal-counter" class="text-slate-500 text-xs text-center mt-2 font-semibold"></p>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a id="floating-whatsapp" 
+       href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20hacer%20una%20consulta" 
+       target="_blank" 
+       class="hidden fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full items-center justify-center shadow-2xl shadow-emerald-900/60 transition-all duration-300 hover:scale-110 group" 
+       title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-slate-900 text-slate-200 text-xs font-semibold px-3 py-1.5 rounded-xl whitespace-nowrap border border-slate-700 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+            ¡Escribinos por WhatsApp!
+        </span>
+    </a>
+
+    <!-- 1. PANTALLA DE BIFURCACIÓN INICIAL -->
+    <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col md:flex-row bg-slate-950 transition-all duration-500">
+        
+        <!-- Mitad Izquierda: CONFECCIONES -->
+        <div class="relative flex-1 flex flex-col justify-center items-center p-8 md:p-12 text-center group overflow-hidden border-b md:border-b-0 md:border-r border-slate-800/60 cursor-pointer" onclick="selectDivision('confecciones')">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-35 group-hover:opacity-50" style="background-image: url('cubre reja verde 2.jpeg');"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+            
+            <div class="relative z-10 max-w-md h-full flex flex-col justify-between py-6">
+                <div class="space-y-4 my-auto">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/60 border border-brand-600/30 text-brand-300 text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-compass-drafting text-brand-400"></i> Fabricación e instalación
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight group-hover:text-brand-400 transition-colors">
+                        Confecciones
+                    </h2>
+                    <p class="text-lg font-bold text-brand-400 uppercase tracking-wide">
+                        Toldos, Cerramientos y Más
+                    </p>
+                    <p class="text-sm font-medium text-slate-300">
+                        Diseño e instalación profesional para hogares y comercios
+                    </p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Toldos, cerramientos en cristal transparente, cubre cercos y trabajos a medida. Instalación profesional y envíos a todo el país.
+                    </p>
+                </div>
+                <div class="pt-4">
+                    <button class="w-full px-8 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold shadow-lg shadow-brand-900/40 transition-all transform group-hover:translate-y-[-2px]">
+                        Ingresar a Confecciones <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOGO CENTRAL CON EL NUEVO ISOTIPO Y BADGE DISTRIBUIDOR ZONDA -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none hidden md:flex flex-col items-center">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-amber-500/60 shadow-2xl flex items-center justify-center bg-slate-900">
+                <img src="Logo de Lonas Lenar_2.png" alt="Logo Lonas Lenar" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-amberCustom-950/90 border border-amberCustom-600/60 text-amberCustom-300 text-[10px] px-3 py-1 rounded-full mt-3 font-bold tracking-wider uppercase shadow-lg flex items-center gap-1.5">
+                <i class="fa-solid fa-certificate text-amberCustom-400"></i> Distribuidor Oficial ZONDA
+            </div>
+        </div>
+
+        <!-- Mitad Derecha: LONAS Y ACCESORIOS -->
+        <div class="relative flex-1 flex flex-col justify-center items-center p-8 md:p-12 text-center group overflow-hidden cursor-pointer" onclick="selectDivision('insumos')">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-35 group-hover:opacity-50" style="background-image: url('portada1.jpg');"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+
+            <div class="relative z-10 max-w-md h-full flex flex-col justify-between py-6">
+                <div class="space-y-4 my-auto">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amberCustom-950/80 border border-amberCustom-600/40 text-amberCustom-300 text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-boxes-packing text-amberCustom-400"></i> Ventas y distribución
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight group-hover:text-amberCustom-400 transition-colors">
+                        Lonas y Accesorios
+                    </h2>
+                    <p class="text-lg font-bold text-amberCustom-400 uppercase tracking-wide">
+                        Distribuidor Oficial de Lona ZONDA
+                    </p>
+                    <p class="text-sm font-medium text-slate-300">
+                        Venta, distribución y todo para la industria lonera
+                    </p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Rollos de lona PVC ZONDA, PVC Cristal, hilos de alta tenacidad, ojales y accesorios para talleres y confeccionistas en todo el país.
+                    </p>
+                </div>
+                <div class="pt-4">
+                    <button class="w-full px-8 py-3.5 rounded-xl bg-amberCustom-600 hover:bg-amberCustom-500 text-white font-bold shadow-lg shadow-amberCustom-900/40 transition-all transform group-hover:translate-y-[-2px]">
+                        Ingresar a Lonas & Accesorios <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SITIO DEDICADO DE CONFECCIONES -->
+    <div id="site-confecciones" class="hidden">
+        
+        <!-- HEADER / BARRA DE NAVEGACIÓN -->
+        <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                
+                <div class="flex items-center gap-3 cursor-pointer" onclick="showSplashScreen()">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border border-brand-500/50 shadow-md flex items-center justify-center bg-slate-900 flex-shrink-0">
+                        <img src="Logo de Lonas Lenar_2.png" alt="Logo Lonas Lenar" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-sm font-black tracking-tight text-white leading-none block">LONAS</span>
+                        <span class="text-base font-black tracking-tighter text-brand-400 leading-none block">LENAR</span>
+                    </div>
+                </div>
+
+                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                    <a href="#inicio-conf" class="hover:text-brand-400 transition-colors">Inicio</a>
+                    <a href="#nosotros-conf" class="hover:text-brand-400 transition-colors">Sobre Nosotros</a>
+                    <a href="#trabajos-conf" class="hover:text-brand-400 transition-colors">Nuestros Trabajos</a>
+                    <a href="#contacto-conf" class="hover:text-brand-400 transition-colors">Contacto</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20solicitar%20un%20presupuesto%20para%20una%20confeccion" target="_blank" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span class="hidden sm:inline">Presupuesto al 11 6680-6847</span>
+                        <span class="sm:hidden">11 6680-6847</span>
+                    </a>
+                    <button onclick="showSplashScreen()" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" title="Cambiar de sección">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENIDO PRINCIPAL DE CONFECCIONES -->
+        <main>
+
+            <!-- SECCIÓN 1: INICIO Y ARTÍCULOS PRINCIPALES -->
+            <section id="inicio-conf" class="py-16 lg:py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-900/60 border border-brand-600/30 text-brand-300 text-xs font-bold tracking-wide uppercase">
+                            <i class="fa-solid fa-shield-halved text-brand-400"></i> Garantía y calidad en confección
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight">
+                            Soluciones en Confecciones, <span class="text-brand-400">Toldos y Cerramientos</span>
+                        </h1>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Diseñamos, fabricamos e instalamos cerramientos, toldos y lonas a medida para hogares, comercios e industrias. Elegí la opción que estás buscando y consultanos directamente por WhatsApp.
+                        </p>
+                    </div>
+
+                    <!-- GRILLA DE PRODUCTOS REALIZADOS (IMAGEN FIJA ÚNICA) -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                        
+                        <!-- Opción 1: Toldos (Sólo la liga.jpeg) -->
+                        <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all flex flex-col justify-between group shadow-xl">
+                            <div>
+                                <div class="h-64 overflow-hidden relative bg-slate-950">
+                                    <img src="la liga.jpeg" alt="Toldo La Liga" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
+                                    <span class="absolute top-4 left-4 z-10 bg-brand-950/90 border border-brand-500/50 text-brand-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                                        Hogares & Comercios
+                                    </span>
+                                </div>
+
+                                <div class="p-6 sm:p-8 space-y-3">
+                                    <h3 class="text-2xl font-extrabold text-white group-hover:text-brand-400 transition-colors">1. Toldos</h3>
+                                    <p class="text-slate-300 text-xs leading-relaxed">
+                                        Protección solar y estilo para galerías, balcones, terrazas y frentes comerciales. Elaborados con lonas de alta durabilidad y mecanismos de primera calidad.
+                                    </p>
+                                    <div class="pt-3 border-t border-slate-800/80 space-y-2">
+                                        <p class="text-xs font-bold text-slate-200">Modelos principales:</p>
+                                        <ul class="text-xs text-slate-400 space-y-1.5">
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> <strong>Toldo brazo invisible:</strong> Moderno, sobrio, extensible, ideal para resguardarse del sol sin perder estilo.</li>
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> <strong>Toldo punto recto:</strong> Clásico, firme y resistente para ventanas y frentes.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 sm:p-8 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20consultar%20por%20presupuesto%20de%20Toldos" target="_blank" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-950">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Consultar Presupuesto de Toldos
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Opción 2: Cerramientos PVC Cristal (Sólo quincho negro.jpeg) -->
+                        <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all flex flex-col justify-between group shadow-xl">
+                            <div>
+                                <div class="h-64 overflow-hidden relative bg-slate-950">
+                                    <img src="quincho negro.jpeg" alt="Cerramiento Quincho Negro" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
+                                    <span class="absolute top-4 left-4 z-10 bg-brand-950/90 border border-brand-500/50 text-brand-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                                        Quinchos & Gastronomía
+                                    </span>
+                                </div>
+
+                                <div class="p-6 sm:p-8 space-y-3">
+                                    <h3 class="text-2xl font-extrabold text-white group-hover:text-brand-400 transition-colors">2. Cerramientos con PVC Cristal</h3>
+                                    <p class="text-slate-300 text-xs leading-relaxed">
+                                        La solución perfecta para aprovechar ambientes exteriores durante todo el año, resguardando del viento, lluvia y frío sin perder visibilidad ni luz natural.
+                                    </p>
+                                    <div class="pt-3 border-t border-slate-800/80 space-y-2">
+                                        <p class="text-xs font-bold text-slate-200">Ideal para:</p>
+                                        <ul class="text-xs text-slate-400 space-y-1.5">
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> <strong>Quinchos y galerías de hogar:</strong> Mantiene la calidez del espacio.</li>
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> <strong>Comercios gastronómicos:</strong> Extiende el espacio para mesas al aire libre.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 sm:p-8 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20consultar%20por%20un%20Cerramiento%20en%20PVC%20Cristal" target="_blank" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-950">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Consultar Cerramiento PVC Cristal
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Opción 3: Cubre Cercos -->
+                        <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all flex flex-col justify-between group shadow-xl">
+                            <div>
+                                <div class="h-64 overflow-hidden relative bg-slate-950">
+                                    <img src="cubre verde 7.jpeg" alt="Cubre Cerco Verde" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
+                                    <span class="absolute top-4 left-4 z-10 bg-brand-950/90 border border-brand-500/50 text-brand-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                                        Privacidad & Protección
+                                    </span>
+                                </div>
+
+                                <div class="p-6 sm:p-8 space-y-3">
+                                    <h3 class="text-2xl font-extrabold text-white group-hover:text-brand-400 transition-colors">3. Cubre Cercos</h3>
+                                    <p class="text-slate-300 text-xs leading-relaxed">
+                                        Lonas reforzadas con ojales perimetrales para brindar privacidad inmediata, abrigo del viento y estética a tus rejas o cierres perimetrales.
+                                    </p>
+                                    <div class="pt-3 border-t border-slate-800/80 space-y-2">
+                                        <p class="text-xs font-bold text-slate-200">Características principales:</p>
+                                        <ul class="text-xs text-slate-400 space-y-1.5">
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> <strong>Fácil instalación:</strong> Ojales reforzados listos para colocar.</li>
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> <strong>Material versátil:</strong> Adaptable a cualquier tipo de estructura o reja.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 sm:p-8 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20consultar%20por%20Cubre%20Cercos" target="_blank" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-950">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por Cubre Cercos
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Opción 4: Trabajos a Medida -->
+                        <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-brand-500/50 transition-all flex flex-col justify-between group shadow-xl">
+                            <div>
+                                <div class="h-64 overflow-hidden relative bg-slate-950">
+                                    <img src="carpa.jpeg" alt="Carpa de Techo" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none"></div>
+                                    <span class="absolute top-4 left-4 z-10 bg-brand-950/90 border border-brand-500/50 text-brand-300 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                                        Diseño Especializado
+                                    </span>
+                                </div>
+
+                                <div class="p-6 sm:p-8 space-y-3">
+                                    <h3 class="text-2xl font-extrabold text-white group-hover:text-brand-400 transition-colors">4. Trabajos a Medida</h3>
+                                    <p class="text-slate-300 text-xs leading-relaxed">
+                                        ¿Tenés un proyecto específico o dimensiones particulares? Confeccionamos cualquier estructura o paño en lona PVC o cristal según tus necesidades exactas.
+                                    </p>
+                                    <div class="pt-3 border-t border-slate-800/80 space-y-2">
+                                        <p class="text-xs font-bold text-slate-200">Realizamos todo tipo de proyectos:</p>
+                                        <ul class="text-xs text-slate-400 space-y-1.5">
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> Paños especiales con ojales, refuerzos o cierres.</li>
+                                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-400 text-xs"></i> Cubiertas de protección para maquinarias, piletas o vehículos.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 sm:p-8 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20tengo%20una%20consulta%20por%20un%20trabajo%20a%20medida" target="_blank" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-950">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Consultar Trabajo a Medida
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: SOBRE NOSOTROS -->
+            <section id="nosotros-conf" class="py-20 bg-slate-900/40 border-t border-slate-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-5">
+                            <span class="text-brand-400 text-xs font-bold uppercase tracking-widest">Sobre LONAS LENAR Confecciones</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                                Experiencia y precisión en cada confección
+                            </h2>
+                            <p class="text-slate-300 leading-relaxed text-sm">
+                                En <strong>LONAS LENAR</strong> combinamos insumos de la más alta calidad con mano de obra especializada para brindar respuestas duraderas a hogares y comercios. Al ser distribuidores de lona ZONDA y especialistas en el rubro lonero, garantizamos materiales resistentes a la intemperie, la radiación UV y los desgarros.
+                            </p>
+                            <p class="text-slate-300 leading-relaxed text-sm">
+                                Acompañamos a nuestros clientes desde el primer asesoramiento hasta la medición y la instalación final de su toldo o cerramiento, garantizando terminaciones prolijas y soluciones a la medida exacta de su espacio.
+                            </p>
+
+                            <div class="grid grid-cols-3 gap-4 pt-3">
+                                <div class="border-l-2 border-brand-500 pl-3">
+                                    <p class="text-lg font-extrabold text-white">A Medida</p>
+                                    <p class="text-[11px] text-slate-400">Diseño según tus necesidades</p>
+                                </div>
+                                <div class="border-l-2 border-brand-500 pl-3">
+                                    <p class="text-lg font-extrabold text-white">Materiales</p>
+                                    <p class="text-[11px] text-slate-400">Variedad y calidad</p>
+                                </div>
+                                <div class="border-l-2 border-brand-500 pl-3">
+                                    <p class="text-lg font-extrabold text-white">Instalación</p>
+                                    <p class="text-[11px] text-slate-400">En CABA y GBA</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-8 rounded-3xl border border-slate-800 space-y-5 shadow-xl">
+                            <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                                <i class="fa-solid fa-list-check text-brand-400"></i> Nuestro proceso de trabajo
+                            </h3>
+                            <div class="space-y-4 text-xs text-slate-300">
+                                <div class="flex items-start gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-brand-900 border border-brand-500 text-brand-300 flex items-center justify-center font-bold text-xs shrink-0">1</span>
+                                    <div>
+                                        <strong class="text-white block font-semibold">Consulta inicial y presupuesto:</strong>
+                                        Nos enviás las medidas y fotos por whatsapp y en base a eso te brindamos un presupuesto orientativo. Si no tenes las medidas, no te preocupes, podemos armar un presupuesto aproximado y luego nuestro equipo pasa a tomar las medidas exactas.
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-brand-900 border border-brand-500 text-brand-300 flex items-center justify-center font-bold text-xs shrink-0">2</span>
+                                    <div>
+                                        <strong class="text-white block font-semibold">Definición de materiales y diseño:</strong>
+                                        Elegimos el tipo de lona, color y mecanismo ideal para tu espacio.
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-brand-900 border border-brand-500 text-brand-300 flex items-center justify-center font-bold text-xs shrink-0">3</span>
+                                    <div>
+                                        <strong class="text-white block font-semibold">Confección e instalación:</strong>
+                                        Fabricamos a medida siguiendo el deseo del cliente, realizamos la instalacion o enviamos a domicilio el producto terminado.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: NUESTROS TRABAJOS (GALERÍA 3D ACTUALIZADA) -->
+            <section id="trabajos-conf" class="py-20 bg-slate-950 border-t border-slate-800 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                        <span class="text-brand-400 font-bold text-xs uppercase tracking-widest">Galería de Proyectos</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Nuestros Trabajos</h2>
+                        <p class="text-slate-400 text-xs">Hacé clic sobre cualquier imagen para verla en pantalla completa y navegar por la galería</p>
+                    </div>
+
+                    <!-- CAROUSEL DE TRABAJOS 3D -->
+                    <div class="relative max-w-5xl mx-auto py-8">
+                        <button onclick="rotateGallery(-1)" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-slate-900/90 hover:bg-brand-600 text-white border border-slate-700/80 flex items-center justify-center transition-all shadow-2xl group">
+                            <i class="fa-solid fa-chevron-left text-lg group-hover:scale-110 transition-transform"></i>
+                        </button>
+                        <button onclick="rotateGallery(1)" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-slate-900/90 hover:bg-brand-600 text-white border border-slate-700/80 flex items-center justify-center transition-all shadow-2xl group">
+                            <i class="fa-solid fa-chevron-right text-lg group-hover:scale-110 transition-transform"></i>
+                        </button>
+
+                        <div class="relative h-[380px] sm:h-[450px] flex items-center justify-center">
+                            <!-- Card 0 -->
+                            <div id="gallery-card-0" class="carousel-card absolute w-[280px] sm:w-[380px] md:w-[460px] bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-2xl cursor-pointer group" onclick="galleryCardClick(0)">
+                                <div class="h-64 sm:h-72 overflow-hidden relative">
+                                    <img id="gallery-img-0" src="" alt="Trabajo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                                    <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md p-2 rounded-full border border-slate-700 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <i class="fa-solid fa-expand text-xs"></i>
+                                    </div>
+                                    <div class="absolute bottom-4 left-4 right-4">
+                                        <p id="gallery-title-0" class="font-extrabold text-white text-base sm:text-lg"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 1 -->
+                            <div id="gallery-card-1" class="carousel-card absolute w-[280px] sm:w-[380px] md:w-[460px] bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-2xl cursor-pointer group" onclick="galleryCardClick(1)">
+                                <div class="h-64 sm:h-72 overflow-hidden relative">
+                                    <img id="gallery-img-1" src="" alt="Trabajo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                                    <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md p-2 rounded-full border border-slate-700 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <i class="fa-solid fa-expand text-xs"></i>
+                                    </div>
+                                    <div class="absolute bottom-4 left-4 right-4">
+                                        <p id="gallery-title-1" class="font-extrabold text-white text-base sm:text-lg"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div id="gallery-card-2" class="carousel-card absolute w-[280px] sm:w-[380px] md:w-[460px] bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-2xl cursor-pointer group" onclick="galleryCardClick(2)">
+                                <div class="h-64 sm:h-72 overflow-hidden relative">
+                                    <img id="gallery-img-2" src="" alt="Trabajo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                                    <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md p-2 rounded-full border border-slate-700 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <i class="fa-solid fa-expand text-xs"></i>
+                                    </div>
+                                    <div class="absolute bottom-4 left-4 right-4">
+                                        <p id="gallery-title-2" class="font-extrabold text-white text-base sm:text-lg"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indicadores Dinámicos -->
+                        <div id="gallery-dots-container" class="flex items-center justify-center gap-2 mt-6 flex-wrap"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: CONTACTO -->
+            <section id="contacto-conf" class="py-20 bg-slate-900/60 border-t border-slate-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-brand-400 font-bold text-xs uppercase tracking-widest">Atención Directa</span>
+                                <h2 class="text-3xl font-extrabold text-white mt-1">Comunicate con nosotros</h2>
+                                <p class="text-slate-400 text-xs mt-2">
+                                    Consultá presupuestos, instalaciones o trabajos a medida. Respondemos en forma inmediata.
+                                </p>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-lg bg-emerald-950 border border-emerald-600/40 flex items-center justify-center text-emerald-400 text-xl">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Atención al cliente & Cotizaciones</p>
+                                        <p class="text-sm font-bold text-white">11 6680-6847</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-lg bg-brand-950 border border-brand-600/40 flex items-center justify-center text-brand-400 text-xl">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Zona de Cobertura</p>
+                                        <p class="text-sm font-bold text-white">CABA, Gran Buenos Aires & Envíos a todo el país</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-lg bg-brand-950 border border-brand-600/40 flex items-center justify-center text-brand-400 text-xl">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Contactanos por mail</p>
+                                        <p class="text-sm font-bold text-white">lenarserviciosintegrales@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulario de Cotización Rápida -->
+                        <div class="bg-slate-950 p-8 rounded-3xl border border-slate-800 shadow-xl space-y-4">
+                            <h3 class="text-lg font-bold text-white">Solicitar Presupuesto Rápido</h3>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Nombre</label>
+                                <input type="text" id="conf-nombre" placeholder="Ej: Juan Pérez" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white text-xs focus:border-brand-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Tipo de Trabajo y Medidas Aproximadas</label>
+                                <textarea id="conf-mensaje" rows="3" placeholder="Ej: Toldo Brazo Invisible para balcón de 3mts de ancho x 2mts de saliente" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white text-xs focus:border-brand-500 outline-none"></textarea>
+                            </div>
+                            <button onclick="enviarConsultaConfeccion()" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Mensaje a WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER DE CONFECCIONES (CON "Nos acompañan" Y LOGOS) -->
+        <footer class="bg-slate-950 border-t border-slate-800 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                
+                <!-- SECCIÓN FIJA DE LOGOS "Nos acompañan" -->
+                <div class="space-y-4">
+                    <h4 class="text-xs font-bold text-brand-400 uppercase tracking-widest flex items-center gap-2">
+                        <i class="fa-solid fa-handshake"></i> Nos acompañan
+                    </h4>
+                    <div class="flex flex-wrap items-center gap-6 sm:gap-10 pt-2">
+                        <div class="logo-wrapper">
+                            <img src="italmec-hd.png" alt="Grupo Italmec" class="logo-img logo-italmec">
+                        </div>
+                        <div class="logo-wrapper">
+                            <img src="plavinil.png" alt="Plavinil" class="logo-img logo-plavinil">
+                        </div>
+                        <div class="logo-wrapper">
+                            <img src="sonne.png" alt="Sonne" class="logo-img logo-sonne">
+                        </div>
+                        <div class="logo-wrapper">
+                            <img src="vahe.png" alt="Hilos Vahe" class="logo-img logo-vahe">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNAS DEL FOOTER -->
+                <div class="grid md:grid-cols-3 gap-8 pt-8 border-t border-slate-900">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded bg-brand-600 flex items-center justify-center text-white font-bold">L</div>
+                            <span class="text-xl font-extrabold text-white">LONAS LENAR</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Fabricación e Instalación de Toldos, Cerramientos con PVC Cristal, Cubre Cercos y Confecciones Especiales a Medida.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Atención e Instalaciones</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed"><i class="fa-solid fa-location-dot text-brand-400 mr-2"></i>Instalaciones en CABA y GBA</p>
+                        <p class="text-xs text-slate-400 leading-relaxed mt-1"><i class="fa-solid fa-truck text-brand-400 mr-2"></i>Envíos de confecciones a todo el país</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Contacto Directo</h4>
+                        <p class="text-xs text-slate-400"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>WhatsApp: 11 6680-6847</p>
+                        <a href="https://wa.me/5491166806847" target="_blank" class="inline-block mt-3 px-4 py-2 rounded-lg bg-emerald-950 border border-emerald-600/40 text-emerald-300 text-xs font-bold">
+                            Escribinos por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-900 pt-6 text-center text-[11px] text-slate-500">
+                    © 2026 LONAS LENAR. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 3. SITIO DEDICADO DE LONAS Y ACCESORIOS -->
+    <div id="site-insumos" class="hidden">
+        
+        <!-- HEADER / BARRA DE NAVEGACIÓN -->
+        <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                
+                <div class="flex items-center gap-3 cursor-pointer" onclick="showSplashScreen()">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border border-amberCustom-500/50 shadow-md flex items-center justify-center bg-slate-900 flex-shrink-0">
+                        <img src="Logo de Lonas Lenar_2.png" alt="Logo Lonas Lenar" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <span class="text-sm font-black tracking-tight text-white leading-none block">LONAS</span>
+                        <span class="text-base font-black tracking-tighter text-amberCustom-500 leading-none block">LENAR</span>
+                    </div>
+                </div>
+
+                <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                    <a href="#inicio" class="hover:text-amberCustom-400 transition-colors">Inicio</a>
+                    <a href="#nosotros" class="hover:text-amberCustom-400 transition-colors">Sobre Nosotros</a>
+                    <a href="#productos" class="hover:text-amberCustom-400 transition-colors">Nuestros Productos</a>
+                    <a href="#contacto" class="hover:text-amberCustom-400 transition-colors">Contacto</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20consultar%20por%20Lonas%20Zonda%20e%20insumos" target="_blank" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span class="hidden sm:inline">WhatsApp: 11 6680-6847</span>
+                        <span class="sm:hidden">11 6680-6847</span>
+                    </a>
+                    <button onclick="showSplashScreen()" class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white" title="Cambiar a la pantalla inicial">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENIDO DE LONAS Y ACCESORIOS -->
+        <main>
+            <section id="inicio" class="relative py-20 lg:py-24 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/80">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full zonda-badge text-amberCustom-300 text-xs font-bold tracking-wide uppercase shadow-lg">
+                                <i class="fa-solid fa-award text-amberCustom-400 text-sm"></i> Distribuidor Oficial Lona ZONDA
+                            </div>
+                            
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                                Venta, Distribución y Todo para la <span class="text-amberCustom-500">Industria Lonera</span>
+                            </h1>
+                            
+                            <p class="text-lg text-slate-300 leading-relaxed">
+                                Abastecemos a talleres, confeccionistas y a todos los sectores de la industria trabajando siempre con la máxima calidad que sólo nuestros productos pueden garantizar. Lona PVC ZONDA, cristal, ojales, accesorios y todo lo que el lonero necesita.
+                            </p>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 text-center">
+                                    <i class="fa-solid fa-truck-fast text-amberCustom-500 text-lg mb-1"></i>
+                                    <p class="text-xs font-bold text-white">Envíos a todo el país</p>
+                                    <p class="text-[10px] text-slate-400">Entregas diarias</p>
+                                </div>
+                                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 text-center">
+                                    <i class="fa-solid fa-box-open text-amberCustom-500 text-lg mb-1"></i>
+                                    <p class="text-xs font-bold text-white">Venta por Rollo / Metro</p>
+                                    <p class="text-[10px] text-slate-400">Mayorista y Minorista</p>
+                                </div>
+                                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 text-center col-span-2 sm:col-span-1">
+                                    <i class="fa-solid fa-shield-virus text-amberCustom-500 text-lg mb-1"></i>
+                                    <p class="text-xs font-bold text-white">Calidad Garantizada</p>
+                                    <p class="text-[10px] text-slate-400">Garantía ZONDA</p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-4 pt-4">
+                                <a href="#productos" class="px-6 py-3.5 rounded-xl bg-amberCustom-600 hover:bg-amberCustom-500 text-white font-bold text-sm shadow-lg shadow-amberCustom-900/50 transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-boxes-stacked"></i> Ver Nuestros Productos
+                                </a>
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20solicitar%20el%20catalogo%20y%20precios%20de%20Lona%20Zonda" target="_blank" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm border border-slate-700 transition-all flex items-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> Solicitar Lista de Precios
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
+                                <img src="zonda.jpeg" alt="Muestrario de Lona Zonda LONAS LENAR" class="w-full h-[400px] object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                                
+                                <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-card border border-amberCustom-500/30">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-xl bg-amberCustom-600 flex items-center justify-center text-white font-black text-lg shadow-md">
+                                            Z
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-extrabold text-white uppercase tracking-wider">Lona ZONDA Original</p>
+                                            <p class="text-[11px] text-amberCustom-300 font-medium">Resistencia UV, alta tenacidad y máxima durabilidad.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="nosotros" class="py-20 bg-slate-900/40">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-5">
+                            <span class="text-amberCustom-500 text-xs font-bold uppercase tracking-widest">Sobre LONAS LENAR</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                                Respaldo y distribución
+                            </h2>
+                            <p class="text-slate-300 leading-relaxed text-sm">
+                                En <strong>LONAS LENAR</strong> nos especializamos en abastecer de forma integral a la industria de lona en toda la República Argentina. Brindamos atención personalizada a talleres de confección, loneras y empresas ligadas al rubro.
+                            </p>
+                            <p class="text-slate-300 leading-relaxed text-sm">
+                                Como <strong>Distribuidores Oficiales de Lona ZONDA</strong>, garantizamos la entrega de materiales originales de primera línea con stock permanente en CABA y un servicio ágil de despacho hacia cualquier provincia.
+                            </p>
+
+                            <div class="grid grid-cols-2 gap-4 pt-3">
+                                <div class="border-l-2 border-amberCustom-500 pl-4 py-1">
+                                    <p class="text-xl font-black text-white">Experiencia</p>
+                                    <p class="text-xs text-slate-400">Más de 20 años en el rubro nos respaldan</p>
+                                </div>
+                                <div class="border-l-2 border-amberCustom-500 pl-4 py-1">
+                                    <p class="text-xl font-black text-white">Presencia</p>
+                                    <p class="text-xs text-slate-400">Llegamos a cada rincón del país</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-8 rounded-3xl border border-slate-800 space-y-6 shadow-xl relative overflow-hidden">
+                            <div class="absolute -top-10 -right-10 w-40 h-40 bg-amberCustom-600/10 rounded-full blur-3xl"></div>
+                            
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-building-user text-amberCustom-500 text-2xl"></i>
+                                <h3 class="text-xl font-bold text-white">¿Por qué trabajar con LONAS LENAR?</h3>
+                            </div>
+
+                            <ul class="space-y-4 text-xs text-slate-300">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-check-circle text-amberCustom-500 text-base mt-0.5"></i>
+                                    <div>
+                                        <strong class="text-white block font-semibold mb-0.5">Distribuidores oficiales de lona Zonda:</strong>
+                                        Trabajamos con toda la línea Zonda, reconocida por su tejido anti desgarre y por la alta calidad de sus productos.
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-check-circle text-amberCustom-500 text-base mt-0.5"></i>
+                                    <div>
+                                        <strong class="text-white block font-semibold mb-0.5">Gran variedad de productos:</strong>
+                                        Además de lona PVC, ofrecemos cristal, sogas, hilos y todo lo que el lonero necesita.
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-check-circle text-amberCustom-500 text-base mt-0.5"></i>
+                                    <div>
+                                        <strong class="text-white block font-semibold mb-0.5">Respaldo y cobertura:</strong>
+                                        Más de 20 años en el mercado llegando a todas las provincias del país.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="productos" class="py-20 bg-slate-950 border-t border-slate-800/80">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                        <span class="text-amberCustom-500 font-bold text-xs uppercase tracking-widest">Lonas y accesorios</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Nuestros Productos</h2>
+                        <p class="text-slate-400 text-xs">Conseguí acá todo lo que necesitas para tu lonera</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberCustom-500/50 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="h-48 overflow-hidden relative">
+                                    <img src="lona1.jpeg" alt="Lona Zonda PVC" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <span class="absolute top-3 left-3 bg-amberCustom-950 border border-amberCustom-600 text-amberCustom-300 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">
+                                        Distribuidor Oficial
+                                    </span>
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <h3 class="text-xl font-bold text-white">Lona PVC ZONDA</h3>
+                                    <p class="text-slate-400 text-xs leading-relaxed">
+                                        Lona vinílica de máxima resistencia con tejido anti desgarre para cubiertas de camión, cerramientos e industria. Variedad de colores.
+                                    </p>
+                                    <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+                                        <li><i class="fa-solid fa-angle-right text-amberCustom-500 mr-1.5"></i><strong>Presentación:</strong> Rollo cerrado (50m) o fraccionado.</li>
+                                        <li><i class="fa-solid fa-angle-right text-amberCustom-500 mr-1.5"></i><strong>Ancho:</strong> 1.50 mts.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20consultar%20precios%20de%20Lona%20Zonda" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-950 hover:bg-amberCustom-600 text-slate-200 hover:text-white border border-slate-800 hover:border-amberCustom-500 text-xs font-bold transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> Consultar Lona ZONDA
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberCustom-500/50 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="h-48 overflow-hidden relative">
+                                    <img src="cristal.jpeg" alt="PVC Cristal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <h3 class="text-xl font-bold text-white">Lona PVC Cristal Transparente</h3>
+                                    <p class="text-slate-400 text-xs leading-relaxed">
+                                        Lona transparente de alta claridad. Ideal para cerramientos residenciales, galerías y locales gastronómicos.
+                                    </p>
+                                    <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+                                        <li><i class="fa-solid fa-angle-right text-amberCustom-500 mr-1.5"></i><strong>Espesores:</strong> 500, 550 y 600 micrones.</li>
+                                        <li><i class="fa-solid fa-angle-right text-amberCustom-500 mr-1.5"></i><strong>Visión:</strong> Super Clear con protección UV.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20consultar%20precios%20de%20PVC%20Cristal" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-950 hover:bg-amberCustom-600 text-slate-200 hover:text-white border border-slate-800 hover:border-amberCustom-500 text-xs font-bold transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> Consultar PVC Cristal
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberCustom-500/50 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="h-48 overflow-hidden relative">
+                                    <img src="acc.jpeg" alt="Máquinas polifuncionales y accesorios" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <h3 class="text-xl font-bold text-white">Máquinas polifuncionales y accesorios</h3>
+                                    <p class="text-slate-400 text-xs leading-relaxed">
+                                        Máquinas, punteras, terminales y todos los accesorios para toldería.
+                                    </p>
+                                    <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+                                        <li><i class="fa-solid fa-angle-right text-amberCustom-500 mr-1.5"></i>Artículos en hierro y aluminio de primera calidad.</li>
+                                        <li><i class="fa-solid fa-angle-right text-amberCustom-500 mr-1.5"></i>Preparados para soportar años a la intemperie.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20consulto%20por%20Maquinas%20y%20Accesorios" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-950 hover:bg-amberCustom-600 text-slate-200 hover:text-white border border-slate-800 hover:border-amberCustom-500 text-xs font-bold transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> Consultar Accesorios
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberCustom-500/50 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="h-48 overflow-hidden relative">
+                                    <img src="ojales.jpg" alt="Ojales y Arandelas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <h3 class="text-xl font-bold text-white">Ojales & Arandelas</h3>
+                                    <p class="text-slate-400 text-xs leading-relaxed">
+                                        Ojales de hierro galvanizado y de bronce resistentes al óxido en distintas medidas.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20consulto%20por%20Ojales" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-950 hover:bg-amberCustom-600 text-slate-200 hover:text-white border border-slate-800 text-xs font-bold transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> Consultar Ojales
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberCustom-500/50 transition-all flex flex-col justify-between group">
+                            <div>
+                                <div class="h-48 overflow-hidden relative">
+                                    <img src="soga.jpeg" alt="Soga e hilos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <h3 class="text-xl font-bold text-white">Soga e hilos</h3>
+                                    <p class="text-slate-400 text-xs leading-relaxed">
+                                        Soga N°7, N°5, N°3 e hilos N°20 en variedad de colores.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="p-6 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20consulto%20por%20Soga%20e%20hilos" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-950 hover:bg-amberCustom-600 text-slate-200 hover:text-white border border-slate-800 text-xs font-bold transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> Consultar Sogas e Hilos
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-amberCustom-500/50 transition-all flex flex-col justify-between group">
+                            <div class="p-6 space-y-3">
+                                <div class="w-10 h-10 rounded-lg bg-amberCustom-950 border border-amberCustom-600/40 flex items-center justify-center text-amberCustom-400 font-bold mb-2">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white">Consultá por el resto de nuestros productos</h3>
+                                <p class="text-slate-400 text-xs leading-relaxed">
+                                    Escribinos para ver nuestro catálogo completo. Mediasombra, rafia, lona rayada y más.
+                                </p>
+                            </div>
+                            <div class="p-6 pt-0">
+                                <a href="https://wa.me/5491166806847?text=Hola%20LONAS%20LENAR,%20quisiera%20solicitar%20el%20catalogo%20completo" target="_blank" class="w-full py-2.5 rounded-xl bg-slate-950 hover:bg-amberCustom-600 text-slate-200 hover:text-white border border-slate-800 text-xs font-bold transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> Solicitar Catálogo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="py-20 bg-slate-900/60 border-t border-slate-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <div class="space-y-6">
+                            <div>
+                                <span class="text-amberCustom-500 font-bold text-xs uppercase tracking-widest">Atención Especializada</span>
+                                <h2 class="text-3xl font-extrabold text-white mt-1">Comunicate con nosotros</h2>
+                                <p class="text-slate-400 text-xs mt-2">
+                                    Consultá stock, presupuestos o envíos. Respondemos en forma inmediata
+                                </p>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-lg bg-emerald-950 border border-emerald-600/40 flex items-center justify-center text-emerald-400 text-xl">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Atención al cliente</p>
+                                        <p class="text-sm font-bold text-white">11 6680-6847</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-lg bg-amberCustom-950 border border-amberCustom-600/40 flex items-center justify-center text-amberCustom-400 text-xl">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Depósito & Atención</p>
+                                        <p class="text-sm font-bold text-white">CABA, Buenos Aires, Argentina</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                    <div class="w-10 h-10 rounded-lg bg-amberCustom-950 border border-amberCustom-600/40 flex items-center justify-center text-amberCustom-400 text-xl">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Contactanos por mail</p>
+                                        <p class="text-sm font-bold text-white">lenarserviciosintegrales@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-8 rounded-3xl border border-slate-800 shadow-xl space-y-4">
+                            <h3 class="text-lg font-bold text-white">Enviar Consulta Rápida</h3>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Nombre o Empresa</label>
+                                <input type="text" id="contacto-nombre" placeholder="Ej: Taller Lonero San Martín" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white text-xs focus:border-amberCustom-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Consulta o Pedido</label>
+                                <textarea id="contacto-mensaje" rows="3" placeholder="Ej: Quisiera cotización por 2 rollos de Lona Zonda Azul y hilos N°20" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-white text-xs focus:border-amberCustom-500 outline-none"></textarea>
+                            </div>
+                            <button onclick="enviarFormularioContacto()" class="w-full py-3.5 rounded-xl bg-amberCustom-600 hover:bg-amberCustom-500 text-white font-bold text-xs shadow-lg transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Mensaje a WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER DE LONAS Y ACCESORIOS -->
+        <footer class="bg-slate-950 border-t border-slate-800 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                
+                <div class="space-y-4">
+                    <h4 class="text-xs font-bold text-amberCustom-400 uppercase tracking-widest flex items-center gap-2">
+                        <i class="fa-solid fa-handshake"></i> Nos acompañan
+                    </h4>
+                    <div class="flex flex-wrap items-center gap-6 sm:gap-10 pt-2">
+                        <div class="logo-wrapper">
+                            <img src="italmec-hd.png" alt="Grupo Italmec" class="logo-img logo-italmec">
+                        </div>
+                        <div class="logo-wrapper">
+                            <img src="plavinil.png" alt="Plavinil" class="logo-img logo-plavinil">
+                        </div>
+                        <div class="logo-wrapper">
+                            <img src="sonne.png" alt="Sonne" class="logo-img logo-sonne">
+                        </div>
+                        <div class="logo-wrapper">
+                            <img src="vahe.png" alt="Hilos Vahe" class="logo-img logo-vahe">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 pt-8 border-t border-slate-900">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded bg-amberCustom-600 flex items-center justify-center text-white font-bold">L</div>
+                            <span class="text-xl font-extrabold text-white">LONAS LENAR</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Venta, Distribución y Todo para la Industria Lonera. Distribuidor Oficial de Lona ZONDA.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Ubicación y Envíos</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed"><i class="fa-solid fa-location-dot text-amberCustom-500 mr-2"></i>Sede Central: CABA, Argentina</p>
+                        <p class="text-xs text-slate-400 leading-relaxed mt-1"><i class="fa-solid fa-truck text-amberCustom-500 mr-2"></i>Despachos por expreso a todo el país</p>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Contacto Directo</h4>
+                        <p class="text-xs text-slate-400"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>WhatsApp: 11 6680-6847</p>
+                        <a href="https://wa.me/5491166806847" target="_blank" class="inline-block mt-3 px-4 py-2 rounded-lg bg-emerald-950 border border-emerald-600/40 text-emerald-300 text-xs font-bold">
+                            Escribinos por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-900 pt-6 text-center text-[11px] text-slate-500">
+                    © 2026 LONAS LENAR. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- SCRIPT DE LÓGICA Y NAVEGACIÓN -->
+    <script>
+        function selectDivision(division) {
+            document.getElementById('splash-screen').classList.add('hidden');
+
+            if (division === 'insumos') {
+                document.getElementById('site-insumos').classList.remove('hidden');
+                document.getElementById('site-confecciones').classList.add('hidden');
+                document.getElementById('floating-whatsapp').classList.remove('hidden');
+                document.getElementById('floating-whatsapp').classList.add('flex');
+            } else {
+                document.getElementById('site-confecciones').classList.remove('hidden');
+                document.getElementById('site-insumos').classList.add('hidden');
+                document.getElementById('floating-whatsapp').classList.remove('hidden');
+                document.getElementById('floating-whatsapp').classList.add('flex');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showSplashScreen() {
+            document.getElementById('splash-screen').classList.remove('hidden');
+            document.getElementById('site-insumos').classList.add('hidden');
+            document.getElementById('site-confecciones').classList.add('hidden');
+            document.getElementById('floating-whatsapp').classList.add('hidden');
+            document.getElementById('floating-whatsapp').classList.remove('flex');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* GALERÍA 3D ACTUALIZADA (SIN SUBTÍTULOS Y CON TÍTULOS ESPECÍFICOS) */
+        const galleryItems = [
+            { src: "la liga.jpeg", title: "Toldo Brazo Invisible para comercio" },
+            { src: "lusqtoff.jpeg", title: "Toldo Punto Recto para comercio" },
+            { src: "punto recto.jpeg", title: "Toldo Punto Recto para hogar" },
+            { src: "quincho negro.jpeg", title: "Cerramiento en PVC Cristal para Hogar" },
+            { src: "cubre verde 7.jpeg", title: "Cubre Cerco para Escuela" },
+            { src: "cubre reja gris.jpeg", title: "Cubre Reja para Baulera" },
+            { src: "carpa.jpeg", title: "Carpa a medida" },
+            { src: "ring.jpeg", title: "Ring de boxeo" },
+            { src: "vela.jpeg", title: "Vela tensada para eventos" },
+            { src: "vela beige.jpeg", title: "Vela tensada para hogares" },
+            { src: "funda verde 1.jpeg", title: "Funda verde a medida" },
+            { src: "cubre reja verde.jpeg", title: "Cubre Cerco Perimetral" },
+            { src: "cubre reja verde 5r.jpeg", title: "Cubre cerco" },
+            { src: "cubre reja gris 2.jpeg", title: "Cubre reja para baulera" },
+            { src: "cubre reja azul.jpeg", title: "Cobertor a medida" },
+            { src: "cubre pileta azul.jpeg", title: "Cubre pileta" }
+        ];
+
+        let currentGalleryActive = 0;
+        const totalGalleryItems = galleryItems.length;
+
+        (function initGalleryDots() {
+            const container = document.getElementById('gallery-dots-container');
+            container.innerHTML = '';
+            for(let i=0; i<totalGalleryItems; i++) {
+                const dot = document.createElement('span');
+                dot.id = `gallery-dot-${i}`;
+                dot.className = `w-2.5 h-2.5 rounded-full cursor-pointer transition-all ${i === 0 ? 'bg-brand-500 scale-125' : 'bg-slate-700'}`;
+                dot.onclick = () => setGalleryActive(i);
+                container.appendChild(dot);
+            }
+        })();
+
+        function updateGallery3D() {
+            for (let i = 0; i < totalGalleryItems; i++) {
+                if(i < 3) {
+                    let cardIdx = i;
+                    let targetItemIdx = (currentGalleryActive + i - 1 + totalGalleryItems) % totalGalleryItems;
+                    
+                    const card = document.getElementById(`gallery-card-${cardIdx}`);
+                    const img = document.getElementById(`gallery-img-${cardIdx}`);
+                    const title = document.getElementById(`gallery-title-${cardIdx}`);
+
+                    img.src = galleryItems[targetItemIdx].src;
+                    title.innerText = galleryItems[targetItemIdx].title;
+
+                    if (cardIdx === 1) { // CENTRO
+                        card.style.transform = 'translateX(0) scale(1.15)';
+                        card.style.zIndex = '20';
+                        card.style.opacity = '1';
+                        card.style.filter = 'brightness(1)';
+                        card.style.borderColor = '#22c55e';
+                    } else if (cardIdx === 0) { // IZQUIERDA
+                        card.style.transform = 'translateX(-65%) scale(0.85)';
+                        card.style.zIndex = '10';
+                        card.style.opacity = '0.65';
+                        card.style.filter = 'brightness(0.7)';
+                        card.style.borderColor = '#1e293b';
+                    } else if (cardIdx === 2) { // DERECHA
+                        card.style.transform = 'translateX(65%) scale(0.85)';
+                        card.style.zIndex = '10';
+                        card.style.opacity = '0.65';
+                        card.style.filter = 'brightness(0.7)';
+                        card.style.borderColor = '#1e293b';
+                    }
+                }
+            }
+
+            for (let i = 0; i < totalGalleryItems; i++) {
+                const dot = document.getElementById(`gallery-dot-${i}`);
+                if(dot) {
+                    if (i === currentGalleryActive) {
+                        dot.className = "w-3 h-3 rounded-full bg-brand-500 cursor-pointer transition-all shadow-md scale-125";
+                    } else {
+                        dot.className = "w-2.5 h-2.5 rounded-full bg-slate-700 cursor-pointer transition-all";
+                    }
+                }
+            }
+
+            if (!document.getElementById('image-modal').classList.contains('hidden')) {
+                renderModalContent();
+            }
+        }
+
+        function rotateGallery(dir) {
+            currentGalleryActive = (currentGalleryActive + dir + totalGalleryItems) % totalGalleryItems;
+            updateGallery3D();
+        }
+
+        function setGalleryActive(idx) {
+            currentGalleryActive = idx;
+            updateGallery3D();
+        }
+
+        function galleryCardClick(cardIdx) {
+            if (cardIdx === 1) {
+                openImageModal(currentGalleryActive);
+            } else if (cardIdx === 0) {
+                rotateGallery(-1);
+            } else if (cardIdx === 2) {
+                rotateGallery(1);
+            }
+        }
+
+        function openImageModal(idx) {
+            currentGalleryActive = idx;
+            updateGallery3D();
+            renderModalContent();
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+
+        function renderModalContent() {
+            const idx = currentGalleryActive;
+            document.getElementById('modal-img').src = galleryItems[idx].src;
+            document.getElementById('modal-caption').innerText = galleryItems[idx].title;
+            document.getElementById('modal-counter').innerText = `Trabajo ${idx + 1} de ${totalGalleryItems}`;
+        }
+
+        function navigateModal(dir) {
+            rotateGallery(dir);
+        }
+
+        function closeImageModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (!document.getElementById('image-modal').classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') navigateModal(-1);
+                if (e.key === 'ArrowRight') navigateModal(1);
+                if (e.key === 'Escape') closeImageModal();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateGallery3D();
+        });
+
+        function enviarFormularioContacto() {
+            const nombre = document.getElementById('contacto-nombre').value || "Cliente";
+            const mensaje = document.getElementById('contacto-mensaje').value || "Consulta general de materiales";
+            const msg = `Hola LONAS LENAR, mi nombre es ${nombre}.\n\nConsulta: ${mensaje}`;
+            window.open(`https://wa.me/5491166806847?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function enviarConsultaConfeccion() {
+            const nombre = document.getElementById('conf-nombre').value || "Cliente";
+            const mensaje = document.getElementById('conf-mensaje').value || "Consulta por trabajo a medida";
+            const msg = `Hola LONAS LENAR (Confecciones), mi nombre es ${nombre}.\n\nDetalle: ${mensaje}`;
+            window.open(`https://wa.me/5491166806847?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
